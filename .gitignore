@@ -30,6 +30,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# local npm cache (used by Codex sandbox)
+.npm-cache/
+.npm-prefix/
+
 # env files (can opt-in for committing if needed)
 .env*
 

@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Digital Bookshelf
+
+A visually clean, searchable library of Markdown summaries with:
+
+- Public library with search + category filter + grid/list view
+- Summary reader modal (Markdown rendered with `react-markdown`)
+- Downloads (`.md`)
+- Admin upload + delete (Vercel Blob)
 
 ## Getting Started
 
-First, run the development server:
+Install deps and start the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Content (local)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Drop `.md` files into `src/content/summaries/`.
 
-## Learn More
+Frontmatter example:
 
-To learn more about Next.js, take a look at the following resources:
+```md
+---
+title: My Summary
+description: 1–2 sentence description.
+category: Business
+tags:
+  - entrepreneurship
+  - marketing
+coverColor: bg-amber-700
+youtubeUrl: ""
+updatedAt: 2026-05-18
+---
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Admin uploads (Vercel Blob)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The admin UI lives at `/admin`. Uploads require:
 
-## Deploy on Vercel
+- `ADMIN_TOKEN` (set in Vercel env vars; keep it secret)
+- `BLOB_READ_WRITE_TOKEN` (created automatically when you connect a Vercel Blob store)
+- Optional: `BLOB_ACCESS=public` (default) or `private`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Local dev with the same env vars:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+vercel env pull .env.local
+```
+
+## Deploy
+
+1. Push this repo to GitHub.
+2. Import the GitHub repo into Vercel.
+3. In Vercel → Project → Storage, create a Blob store and connect it.
+4. Add `ADMIN_TOKEN` in Vercel → Project → Environment Variables.
+
+After that, uploads from `/admin` will be stored in Blob and show up in the public library.
+
+---
+
+Built with Next.js + Tailwind.
