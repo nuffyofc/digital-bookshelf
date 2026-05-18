@@ -27,7 +27,7 @@ Frontmatter example:
 ```md
 ---
 title: My Summary
-description: 1–2 sentence description.
+description: 1-2 sentence description.
 category: Business
 tags:
   - entrepreneurship
@@ -56,8 +56,8 @@ vercel env pull .env.local
 
 1. Push this repo to GitHub.
 2. Import the GitHub repo into Vercel.
-3. In Vercel → Project → Storage, create a Blob store and connect it.
-4. Add `ADMIN_TOKEN` in Vercel → Project → Environment Variables.
+3. In Vercel -> Project -> Storage, create a Blob store and connect it.
+4. Add `ADMIN_TOKEN` in Vercel -> Project -> Environment Variables.
 
 After that, uploads from `/admin` will be stored in Blob and show up in the public library.
 
