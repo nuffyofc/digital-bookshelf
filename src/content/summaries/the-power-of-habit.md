@@ -1,13 +1,21 @@
 ---
 title: The Power of Habit
 description: Why we do what we do in life and business.
+youtubeUrl: ""
+videoId: ""
+duration: ""
+publishedAt: ""
+author: ""
+authorUrl: ""
 category: Psychology
 tags:
   - habits
   - behavior
   - productivity
+topics:
+  - Psychology
+  - Personal Development
 coverColor: bg-blue-700
-youtubeUrl: ""
 updatedAt: 2026-05-18
 ---
 

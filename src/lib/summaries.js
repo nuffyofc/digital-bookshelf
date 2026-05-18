@@ -130,6 +130,12 @@ export async function upsertSummaryFromMarkdownUpload({
     tags: meta.tags ?? [],
     coverColor: meta.coverColor ?? "",
     youtubeUrl: meta.youtubeUrl ?? "",
+    videoId: meta.videoId ?? "",
+    duration: meta.duration ?? "",
+    publishedAt: meta.publishedAt ?? "",
+    author: meta.author ?? "",
+    authorUrl: meta.authorUrl ?? "",
+    topics: meta.topics ?? [],
     updatedAt: meta.updatedAt,
     pathname: blob.pathname,
     url: blob.url,
@@ -163,6 +169,12 @@ function normalizeFrontmatter(data, id) {
   meta.tags = normalizeTags(meta.tags);
   meta.coverColor = meta.coverColor ? String(meta.coverColor) : "";
   meta.youtubeUrl = meta.youtubeUrl ? String(meta.youtubeUrl) : "";
+  meta.videoId = meta.videoId ? String(meta.videoId) : "";
+  meta.duration = meta.duration ? String(meta.duration) : "";
+  meta.publishedAt = meta.publishedAt ? String(meta.publishedAt) : "";
+  meta.author = meta.author ? String(meta.author) : "";
+  meta.authorUrl = meta.authorUrl ? String(meta.authorUrl) : "";
+  meta.topics = Array.isArray(meta.topics) ? meta.topics : [];
   meta.updatedAt = meta.updatedAt
     ? String(meta.updatedAt)
     : new Date().toISOString();
@@ -200,6 +212,12 @@ function readLocalIndex() {
         tags: meta.tags ?? [],
         coverColor: meta.coverColor ?? "",
         youtubeUrl: meta.youtubeUrl ?? "",
+        videoId: meta.videoId ?? "",
+        duration: meta.duration ?? "",
+        publishedAt: meta.publishedAt ?? "",
+        author: meta.author ?? "",
+        authorUrl: meta.authorUrl ?? "",
+        topics: meta.topics ?? [],
         updatedAt: meta.updatedAt,
         pathname: `local:${fileName}`,
         url: null,
@@ -242,6 +260,12 @@ function normalizeIndexRecord(record) {
     tags: normalizeTags(record.tags),
     coverColor: record.coverColor ? String(record.coverColor) : "",
     youtubeUrl: record.youtubeUrl ? String(record.youtubeUrl) : "",
+    videoId: record.videoId ? String(record.videoId) : "",
+    duration: record.duration ? String(record.duration) : "",
+    publishedAt: record.publishedAt ? String(record.publishedAt) : "",
+    author: record.author ? String(record.author) : "",
+    authorUrl: record.authorUrl ? String(record.authorUrl) : "",
+    topics: Array.isArray(record.topics) ? record.topics : [],
     updatedAt: record.updatedAt ? String(record.updatedAt) : "",
     pathname: record.pathname ? String(record.pathname) : `summaries/${id}.md`,
     url: record.url ? String(record.url) : null,
