@@ -60,15 +60,20 @@ export async function getSummaryContentById(id) {
 
   if (hasBlobToken()) {
     const pathname = `summaries/${safeId}.md`;
-    const result = await get(pathname, { access: BLOB_ACCESS });
-    if (!result || result.statusCode !== 200 || !result.stream) return null;
-    const raw = await new Response(result.stream).text();
-    const parsed = matter(raw);
-    return {
-      id: safeId,
-      meta: normalizeFrontmatter(parsed.data, safeId),
-      content: parsed.content,
-    };
+    try {
+      const result = await get(pathname, { access: BLOB_ACCESS });
+      if (result && result.statusCode === 200 && result.stream) {
+        const raw = await new Response(result.stream).text();
+        const parsed = matter(raw);
+        return {
+          id: safeId,
+          meta: normalizeFrontmatter(parsed.data, safeId),
+          content: parsed.content,
+        };
+      }
+    } catch {
+      // Fall through to local files
+    }
   }
 
   const fullPath = path.join(LOCAL_SUMMARIES_DIR, `${safeId}.md`);
