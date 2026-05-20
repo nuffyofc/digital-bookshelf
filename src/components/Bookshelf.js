@@ -24,6 +24,37 @@ function classNames(...items) {
   return items.filter(Boolean).join(" ");
 }
 
+function InfoButton() {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="flex h-8 w-8 items-center justify-center rounded-xl border border-stone-200 bg-white text-xs font-semibold text-stone-500 transition hover:bg-stone-50"
+        title="Info"
+      >
+        ?
+      </button>
+      {open && (
+        <div className="absolute bottom-full right-0 z-10 mb-2 w-72 rounded-xl border border-stone-200 bg-white p-3 text-xs leading-5 text-stone-600 shadow-lg">
+          <p className="font-semibold text-stone-800">How to use &amp; URL notes</p>
+          <p className="mt-1">
+            If a summary has a YouTube video attached, paste the link into the{" "}
+            <code className="rounded bg-stone-100 px-1">youtubeUrl</code> field.
+          </p>
+          <p className="mt-1">
+            <span className="font-semibold text-amber-800">Important:</span>{" "}
+            Playlist URLs (containing <code className="rounded bg-stone-100 px-1">list</code> in the link){" "}
+            <span className="font-semibold">will not work</span>. Only clean video
+            URLs work (e.g. <code className="rounded bg-stone-100 px-1">youtube.com/watch?v=XXXXX</code>).
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Bookshelf({ initialSummaries }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
@@ -308,6 +339,7 @@ export default function Bookshelf({ initialSummaries }) {
                 >
                   Download .md
                 </a>
+                <InfoButton />
                 <button
                   type="button"
                   onClick={() => setSelected(null)}

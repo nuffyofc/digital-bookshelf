@@ -9,6 +9,17 @@ A visually clean, searchable library of Markdown summaries with:
 - Downloads (`.md`)
 - Admin upload + delete (Vercel Blob)
 
+## How to use
+
+- Browse summaries, click a card to open the reader modal.
+- Click **Download .md** to save the raw Markdown file.
+- Each summary can link to a YouTube video via the `youtubeUrl` field.
+
+> **⚠️ Important:** Only clean YouTube video URLs work.  
+> Playlist URLs (containing `list` in the link) are **not supported**.  
+> ✅ Use: `https://youtube.com/watch?v=XXXXXXXXXXX`  
+> ❌ Do NOT use: `https://youtube.com/watch?v=XXX&list=PLxxx...`
+
 ## Getting Started
 
 Install deps and start the dev server:
@@ -30,12 +41,20 @@ Frontmatter example:
 ---
 title: My Summary
 description: 1-2 sentence description.
+youtubeUrl: https://youtube.com/watch?v=XXXXXXXXXXX
+videoId: XXXXXXXXXXX
+duration: 18:32
+publishedAt: 2026-05-15
+author: Speaker Name
+authorUrl: https://youtube.com/@channel
 category: Business
 tags:
   - entrepreneurship
   - marketing
+topics:
+  - Business Strategy
+  - Personal Development
 coverColor: bg-amber-700
-youtubeUrl: ""
 updatedAt: 2026-05-18
 ---
 ```
