@@ -1,3 +1,5 @@
+**🔗 Live:** [https://digital-bookshelf-opal.vercel.app/](https://digital-bookshelf-opal.vercel.app/)
+
 ## Digital Bookshelf
 
 A visually clean, searchable library of Markdown summaries with:
